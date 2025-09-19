@@ -6,62 +6,33 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 11:54:52 by maw               #+#    #+#             */
-/*   Updated: 2025/09/12 15:44:15 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/19 16:02:48 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main ()
 {
-	std::cout << "* GRADE TOO LOW EXAMPLE *" << std::endl;
-	try
-	{
-		Bureaucrat Vieux("Vieux", 157);
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
-	std::cout << "* GRADE TOO HIGH EXAMPLE *" << std::endl;	
-	try
-	{
-		Bureaucrat Jeune("Jeune", 0);
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
-	std::cout << "* GOOD EXAMPLE *" << std::endl;		
-	try
-	{
-		Bureaucrat Mid("Mid", 89);
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << "Exception caught: " << e.what() << std::endl;
-	}
-	std::cout << "* INCREMENT EXAMPLE *" << std::endl;	
-	Bureaucrat Carl("Carl", 1);
-	try
-	{
-		Carl.IncrementGrade();
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << Carl.getName() << " Exception caught: " << e.what() << std::endl;
-	}
-	std::cout << Carl.getName() << " " << Carl.getGrade() << std::endl;
-	std::cout << "* DECREMENT EXAMPLE *" << std::endl;	
 	Bureaucrat Angelo("Angelo", 150);
+	Bureaucrat Gil("Gil", 3);	
+	Form Contract("contract", 8, 10);
 	try
 	{
-		Angelo.DecrementGrade();
+		Angelo.signForm(Contract);
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << Angelo.getName() << " Exception caught: " << e.what() << std::endl;
+		std::cout << Angelo.getName() << " couldn't sign " << Contract.getName() << " because " << e.what() << std::endl;
 	}
-	std::cout << Angelo.getName() << " " << Angelo.getGrade() << std::endl;
+	try
+	{
+		Gil.signForm(Contract);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << Gil.getName() << " couldn't sign " << Contract.getName() << " because " << e.what() << std::endl;
+	}
 	return (0);
 }

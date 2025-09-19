@@ -6,11 +6,12 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 11:55:12 by maw               #+#    #+#             */
-/*   Updated: 2025/09/12 16:12:25 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/18 16:50:39 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade):_name(name)
 {
@@ -77,4 +78,9 @@ void Bureaucrat::DecrementGrade()
 	if (_grade == 150)
 		throw GradeTooLowException();
 	this->_grade += 1;		
+}
+
+void Bureaucrat::signForm(Form &obj)
+{
+	obj.beSigned(*this);
 }
