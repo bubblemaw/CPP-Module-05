@@ -6,13 +6,13 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 19:11:21 by maw               #+#    #+#             */
-/*   Updated: 2025/09/19 19:43:46 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/23 15:23:47 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm (std::string target): AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm (std::string target): AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm  Constructor called" << std::endl;
 }
@@ -37,6 +37,8 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+	if (this->_signed == false)
+		throw FormNotSigned();
 	if (executor.getGrade() <= ex_min_grade)
 	{
 		std::cout << "shckk shckk shckk shckk shckk shckk shckk" << std::endl;

@@ -6,13 +6,17 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 16:21:17 by maw               #+#    #+#             */
-/*   Updated: 2025/09/19 19:45:26 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/23 15:03:39 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 # include "AForm.hpp"
+# include "Bureaucrat.hpp"
+
+class Bureaucrat;
+class AForm;
 
 class RobotomyRequestForm : public AForm
 {

@@ -6,7 +6,7 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 11:55:19 by maw               #+#    #+#             */
-/*   Updated: 2025/09/19 20:23:56 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/23 15:29:08 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include <stdexcept>
 # include <exception>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 class AForm;
 
@@ -35,8 +35,8 @@ class Bureaucrat
 		int getGrade() const;
 		void IncrementGrade();
 		void DecrementGrade();
-		void signForm(AForm &obj);
-		void executeForm(AForm const &form);
+		void signForm(AForm *obj);					
+		void executeForm(const AForm *form);
 };
 
 class GradeTooHighException : public std::exception
@@ -54,6 +54,15 @@ class GradeTooLowException : public std::exception
 			return "Grade Too Low";
 		}
 };
+
+class FormNotSigned : public std::exception
+{
+	public:
+		virtual const char *what() const throw(){
+			return "Form must be signed before execution";
+		}
+};
+
 std::ostream &operator<<(std::ostream &out ,const Bureaucrat &obj);
 
 #endif

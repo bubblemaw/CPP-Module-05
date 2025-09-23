@@ -6,12 +6,11 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 11:55:12 by maw               #+#    #+#             */
-/*   Updated: 2025/09/19 20:23:59 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/23 15:39:03 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade):_name(name)
 {
@@ -80,12 +79,15 @@ void Bureaucrat::DecrementGrade()
 	this->_grade += 1;		
 }
 
-void Bureaucrat::signForm(AForm &obj)
+void Bureaucrat::signForm(AForm *obj)
 {
-	obj.beSigned(*this);
+	obj->beSigned(*this);
 }
 
-void Bureaucrat::executeForm(AForm const &form)
+void Bureaucrat::executeForm(const AForm *form)
 {
-
+	form->execute(*this);
+	std::cout << this->getName()
+			<< " executed "
+			<< form->getName() << std::endl;
 }

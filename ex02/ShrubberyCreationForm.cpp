@@ -6,13 +6,13 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 16:55:46 by maw               #+#    #+#             */
-/*   Updated: 2025/09/19 19:10:23 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/23 15:24:08 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm (std::string target): AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm (std::string target): AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	std::cout << "ShrubberyCreationForm  Constructor called" << std::endl;
 }
@@ -35,8 +35,15 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
+std::string ShrubberyCreationForm::getName() const
+{
+	return (_name);
+}
+
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+	if (this->_signed == false)
+		throw FormNotSigned();	
 	if (executor.getGrade() <= ex_min_grade)
 	{
 		std::string filename;
@@ -47,8 +54,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		file << "   /    \\ " << std::endl;
 		file << "  /      \\ " << std::endl;
 		file << "  --------" << std::endl;
-		file << "  	  $$" << std::endl;
-		file << "  	  $$" << std::endl;
+		file << "  	$$" << std::endl;
+		file << "  	$$" << std::endl;
 		file.close();	
 	}
 	else

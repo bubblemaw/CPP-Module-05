@@ -6,19 +6,19 @@
 /*   By: maw <maw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 15:53:47 by maw               #+#    #+#             */
-/*   Updated: 2025/09/19 18:16:02 by maw              ###   ########.fr       */
+/*   Updated: 2025/09/23 14:39:45 by maw              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 # include <string>
 # include <iostream>
 # include <stdexcept>
 # include <exception>
-# include "Bureaucrat.hpp"
 # include <filesystem>
 # include <fstream>
+# include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
@@ -33,16 +33,16 @@ class AForm
 		AForm();
 		AForm(std::string name, int sign_grade, int ex_grade);
 		AForm(const AForm &obj);
-		~AForm();
+		virtual ~AForm();
 		AForm &operator=(const AForm &obj);
 		std::string getName() const;
 		int getGrade_ex() const;
 		int getGrade_signed() const;
 		bool is_signed() const;
-		virtual void beSigned(const Bureaucrat &obj);
+		void beSigned(const Bureaucrat &obj);
 		virtual void execute(Bureaucrat const &executor) const = 0;
 };
 
-std::ostream &operator<<(std::ostream &out ,const Form &obj);
+std::ostream &operator<<(std::ostream &out ,const AForm &obj);
 
 #endif
