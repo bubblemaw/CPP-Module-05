@@ -18,6 +18,7 @@ int main ()
 	Bureaucrat Angelo("Angelo", 150);
 	Bureaucrat Gil("Gil", 3);	
 	Form Contract("contract", 8, 10);
+	std::cout << Contract << std::endl;
 	try
 	{
 		Angelo.signForm(Contract);
@@ -34,5 +35,14 @@ int main ()
 	{
 		std::cout << Gil.getName() << " couldn't sign " << Contract.getName() << " because " << e.what() << std::endl;
 	}
+	try
+	{
+		Gil.signForm(Contract);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << Gil.getName() << " couldn't sign " << Contract.getName() << " because " << e.what() << std::endl;
+	}	
+	std::cout << Contract << std::endl;	
 	return (0);
 }

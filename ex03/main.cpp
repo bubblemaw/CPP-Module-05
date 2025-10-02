@@ -19,6 +19,7 @@
 
 int main ()
 {
+	Bureaucrat big("big", 1);
 	Intern someRandomIntern;
 	AForm* robot;
 	AForm* milk;
@@ -32,15 +33,33 @@ int main ()
 	milk = someRandomIntern.makeForm("milk", "Cow");
 	std::cout << std::endl << std::endl;	
 	std::cout << "------------------shrubb form test-----------------------" << std::endl;
-	shrubb = someRandomIntern.makeForm("shrubbery creation", "Bender");
+	shrubb = someRandomIntern.makeForm("shrubbery creation", "Bill");
 	std::cout << std::endl << std::endl;	
 	std::cout << "------------------president form test-----------------------" << std::endl;
-	pres = someRandomIntern.makeForm("presidential pardon", "Bender");
+	pres = someRandomIntern.makeForm("presidential pardon", "Mark");
 	std::cout << std::endl << std::endl;
-	
+	std::cout << *pres << std::endl;
+	try
+	{
+		big.signForm(pres);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << big.getName() << " couldn't sign " << pres->getName() << " because " << e.what() << std::endl;
+	}
+	try
+	{
+		big.executeForm(pres);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << big.getName() << " couldn't execute " << pres->getName() << " because " << e.what() << std::endl;
+	}	
+
 	delete milk;
 	delete robot;
 	delete pres;
-	delete shrubb;		
+	delete shrubb;
+	
 	return (0);
 }

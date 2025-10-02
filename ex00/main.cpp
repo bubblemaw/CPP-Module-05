@@ -18,6 +18,7 @@ int main ()
 	try
 	{
 		Bureaucrat Vieux("Vieux", 157);
+		std::cout << Vieux << std::endl;		
 	}
 	catch(const std::exception& e)
 	{
@@ -36,6 +37,7 @@ int main ()
 	try
 	{
 		Bureaucrat Mid("Mid", 89);
+		std::cout << Mid << std::endl;		
 	}
 	catch(const std::exception& e)
 	{
@@ -51,7 +53,7 @@ int main ()
 	{
 		std::cout << Carl.getName() << " Exception caught: " << e.what() << std::endl;
 	}
-	std::cout << Carl.getName() << " " << Carl.getGrade() << std::endl;
+	std::cout << Carl << std::endl;
 	std::cout << "* DECREMENT EXAMPLE *" << std::endl;	
 	Bureaucrat Angelo("Angelo", 150);
 	try
@@ -62,6 +64,6 @@ int main ()
 	{
 		std::cout << Angelo.getName() << " Exception caught: " << e.what() << std::endl;
 	}
-	std::cout << Angelo.getName() << " " << Angelo.getGrade() << std::endl;
+	std::cout << Angelo << std::endl;
 	return (0);
 }

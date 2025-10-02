@@ -63,6 +63,14 @@ class FormNotSigned : public std::exception
 		}
 };
 
+class AlreadySignedException : public std::exception
+{
+	public:
+		const char *what() const throw() {
+			return "This form has been already signed";
+		}	
+};
+
 std::ostream &operator<<(std::ostream &out ,const Bureaucrat &obj);
 
 #endif

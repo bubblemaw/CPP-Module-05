@@ -42,7 +42,7 @@ class Bureaucrat
 class GradeTooHighException : public std::exception
 {
 	public:
-		virtual const char *what() const throw(){
+		const char *what() const throw(){
 			return "Grade Too High";
 		}
 };
@@ -50,7 +50,7 @@ class GradeTooHighException : public std::exception
 class GradeTooLowException : public std::exception
 {
 	public:
-		virtual const char *what() const throw() {
+		const char *what() const throw() {
 			return "Grade Too Low";
 		}
 };
@@ -58,9 +58,17 @@ class GradeTooLowException : public std::exception
 class FormNotSigned : public std::exception
 {
 	public:
-		virtual const char *what() const throw(){
+		const char *what() const throw(){
 			return "Form must be signed before execution";
 		}
+};
+
+class AlreadySignedException : public std::exception
+{
+	public:
+		const char *what() const throw() {
+			return "This form has been already signed";
+		}	
 };
 
 std::ostream &operator<<(std::ostream &out ,const Bureaucrat &obj);

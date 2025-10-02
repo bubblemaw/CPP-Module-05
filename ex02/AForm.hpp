@@ -24,7 +24,7 @@ class Bureaucrat;
 
 class AForm
 {
-	protected:
+	private:
 		const std::string _name;
 		bool _signed;
 		const int signed_min_grade;
@@ -40,6 +40,7 @@ class AForm
 		int getGrade_signed() const;
 		bool is_signed() const;
 		void beSigned(const Bureaucrat &obj);
+		void beSigned();
 		virtual void execute(Bureaucrat const &executor) const = 0;
 };
 

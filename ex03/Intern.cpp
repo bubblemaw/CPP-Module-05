@@ -58,8 +58,6 @@ ShrubberyCreationForm* Intern::MakeShrubb(std::string target)
 	return (new ShrubberyCreationForm(target));
 }
 
-
-
 AForm* Intern::makeForm(std::string formName, std::string formTarget)
 {
 	int i = 0;

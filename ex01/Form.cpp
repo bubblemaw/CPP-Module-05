@@ -29,7 +29,6 @@ Form::Form():_name("Default"),  _signed(false), signed_min_grade(150), ex_min_gr
 Form::Form(const Form &obj): _name(obj.getName() + "_copy"),  _signed(obj.is_signed()), signed_min_grade(obj.getGrade_signed()), ex_min_grade(obj.getGrade_ex())
 {
 	std::cout << "Form Copy Constructor called" << std::endl;	
-	// *this = obj;
 }
 
 Form::~Form()
@@ -50,10 +49,12 @@ Form &Form::operator=(const Form &obj)
 std::ostream &operator<<(std::ostream &out ,const Form &obj)
 {
 	out << "Form: " << obj.getName() << std::endl
-		<< "Minimum grade to signed it" << obj.getGrade_signed() << std::endl
-		<< "Minimum grade to execute it" << obj.getGrade_ex() << std::endl; 
+		<< "Minimum grade to signed it: " << obj.getGrade_signed() << std::endl
+		<< "Minimum grade to execute it: " << obj.getGrade_ex() << std::endl; 
 	if (obj.is_signed())
 		out << "the form is signed";
+	else
+		out << "the form is not signed";
 	return out;
 }
 
@@ -79,7 +80,11 @@ bool Form::is_signed() const
 
 void Form::beSigned(const Bureaucrat &obj)
 {
-	if (obj.getGrade() <= signed_min_grade)
+	if (_signed == true)
+	{
+		throw AlreadySignedException();
+	}
+	else if (obj.getGrade() <= signed_min_grade)
 	{
 		_signed = true;
 		std::cout << obj.getName() << " signed "
@@ -87,9 +92,6 @@ void Form::beSigned(const Bureaucrat &obj)
 	}
 	else
 	{
-		// std::cout << obj.getName() << " couldn't sign "
-		// << _name << " because ";
 		throw GradeTooLowException();
 	}
-
 }

@@ -30,21 +30,23 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	std::cout << "ShrubberyCreationForm assignement operator called" << std::endl;
 	if (this != &obj)
 	{
-		_signed = obj._signed;
+		_target = obj._target;
+		if (obj.is_signed())
+			this->beSigned();
 	}
 	return (*this);
 }
 
 std::string ShrubberyCreationForm::getName() const
 {
-	return (_name);
+	return (this->getName());
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (this->_signed == false)
+	if (this->is_signed() == false)
 		throw FormNotSigned();	
-	if (executor.getGrade() <= ex_min_grade)
+	if (executor.getGrade() <= this->getGrade_ex())
 	{
 		std::string filename;
 		filename = _target + "_shruberry";
