@@ -16,10 +16,13 @@ RobotomyRequestForm::RobotomyRequestForm (std::string target): AForm("RobotomyRe
 {
 	std::cout << "RobotomyRequestForm  Constructor called" << std::endl;
 }
-RobotomyRequestForm::RobotomyRequestForm (const RobotomyRequestForm  &obj)
+
+RobotomyRequestForm::RobotomyRequestForm (const RobotomyRequestForm  &obj) : AForm("RobotomyRequestForm", 72, 45)
 {
 	std::cout << "RobotomyRequestForm  Copy Constructor called" << std::endl;
+	*this = obj;
 }
+
 RobotomyRequestForm::~RobotomyRequestForm ()
 {
 	std::cout << "RobotomyRequestForm  Destructor called" << std::endl;

@@ -16,11 +16,13 @@ PresidentialPardonForm::PresidentialPardonForm (std::string target): AForm("Pres
 {
 	std::cout << "PresidentialPardonForm  Constructor called" << std::endl;
 }
-PresidentialPardonForm::PresidentialPardonForm (const PresidentialPardonForm  &obj)
+
+PresidentialPardonForm::PresidentialPardonForm (const PresidentialPardonForm  &obj): AForm("PresidentialPardonForm", 25, 5)
 {
 	std::cout << "PresidentialPardonForm  Copy Constructor called" << std::endl;
 	*this = obj;
 }
+
 PresidentialPardonForm::~PresidentialPardonForm ()
 {
 	std::cout << "PresidentialPardonForm  Destructor called" << std::endl;

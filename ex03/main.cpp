@@ -60,6 +60,6 @@ int main ()
 	delete robot;
 	delete pres;
 	delete shrubb;
-	
+
 	return (0);
 }
